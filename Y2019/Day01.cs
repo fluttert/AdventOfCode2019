@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace AdventOfCode2019.Y2019
 {
-    public class Day01
+    public class Day01 : AocDay
     {
         public string SolvePart1(string input = null)
         {
@@ -40,10 +41,26 @@ namespace AdventOfCode2019.Y2019
                     totalIterations++;
                 }
             }
+            Debug.WriteLine($"Day 01 - SolvePart2 had {totalIterations} iterations");
             return ($"{totalPart2}");
         }
 
         // Tests
+
+        public void Tests()
+        {
+            // part 01
+            Debug.Assert(SolvePart1("12") == "2");
+            Debug.Assert(SolvePart1("14") == "2");
+            Debug.Assert(SolvePart1("1969") == "654");
+            Debug.Assert(SolvePart1("100756") == "33583");
+
+            // part 02
+            Debug.Assert(SolvePart2("12") == "2");
+            Debug.Assert(SolvePart2("14") == "2");
+            Debug.Assert(SolvePart2("1969") == "966");
+            Debug.Assert(SolvePart2("100756") == "50346");
+        }
 
         // My personal input
         public string input1 = @"114106
@@ -146,5 +163,7 @@ namespace AdventOfCode2019.Y2019
 143221
 86568
 148706";
+
+       
     }
 }

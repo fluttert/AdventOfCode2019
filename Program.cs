@@ -8,9 +8,13 @@ namespace AdventOfCode2019
     {
         private static void Main(string[] args)
         {
+            // Also display the rough runtime
             Stopwatch stopwatch = new Stopwatch();
 
+            // init day + run tests if available
             var day = new Day01();
+            day.Tests();
+            
             
             stopwatch.Start();
             Console.WriteLine($"Part 1 answer {day.SolvePart1()}, in {stopwatch.ElapsedMilliseconds} ms");
