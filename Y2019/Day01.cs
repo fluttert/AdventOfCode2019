@@ -4,9 +4,10 @@ namespace AdventOfCode2019.Y2019
 {
     public class Day01
     {
-        public string SolvePart1()
+        public string SolvePart1(string input = null)
         {
-            int[] lines = Array.ConvertAll(input1.Split(Environment.NewLine), int.Parse);
+            input = input ?? input1;
+            int[] lines = Array.ConvertAll(input.Split(Environment.NewLine), int.Parse);
 
             // part 1
             int totalPart1 = 0;
@@ -18,11 +19,13 @@ namespace AdventOfCode2019.Y2019
             return "" + totalPart1;
         }
 
-        public string SolvePart2()
+        public string SolvePart2(string input = null)
         {
+            input = input ?? input1;
             // part 2
-            int[] lines = Array.ConvertAll(input1.Split(Environment.NewLine), int.Parse);
+            int[] lines = Array.ConvertAll(input.Split(Environment.NewLine), int.Parse);
             int totalPart2 = 0;
+            int totalIterations = 0;
             foreach (int fuel in lines)
             {
                 int recalculatedFuel = fuel; // store as variable that gradually decrements
@@ -34,6 +37,7 @@ namespace AdventOfCode2019.Y2019
                         totalPart2 += newFuel;
                     }
                     recalculatedFuel = newFuel;
+                    totalIterations++;
                 }
             }
             return ($"{totalPart2}");
