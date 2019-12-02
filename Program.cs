@@ -12,7 +12,8 @@ namespace AdventOfCode2019
             Stopwatch stopwatch = new Stopwatch();
 
             // init day + run tests if available
-            var day = new Day01();
+            //var day = new Day01();
+            var day = new Day02();
             day.Tests();
             
             
