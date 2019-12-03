@@ -3,7 +3,7 @@
     /// <summary>
     /// Default implementation of a Advent of Code challenge day
     /// </summary>
-    internal interface AocDay
+    internal interface IAoCDay
     {
         /// <summary>
         /// Solve part 1

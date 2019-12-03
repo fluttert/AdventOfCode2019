@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace AdventOfCode2019.Y2019
 {
-    public class Day01 : AocDay
+    public class Day01 : IAoCDay
     {
         public string SolvePart1(string input = null)
         {
