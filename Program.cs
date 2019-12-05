@@ -15,7 +15,8 @@ namespace AdventOfCode2019
             //var day = new Day01();
             //var day = new Day02();
             //var day = new Day03();
-            var day = new Day04();
+            //var day = new Day04();
+            var day = new Day05();
             day.Tests();
             
             
