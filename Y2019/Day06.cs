@@ -62,21 +62,21 @@ namespace AdventOfCode2019.Y2019
 
             // get orbits from you and santa
             // tactic: List all orbits from YOU/SAN to COM, and then subtract all doubles
-            var orbitsYou = new HashSet<Orbit>();
+            var orbitsYou = new HashSet<string>();
             Orbit o = orbits["YOU"].parent;
             while (o.parent != null)
             {
-                orbitsYou.Add(o);
-                Debug.WriteLine($"Y to {o.name}");
+                orbitsYou.Add(o.name);
+                //Debug.WriteLine($"Y to {o.name}");
                 o = o.parent;
             }
             o = orbits["SAN"].parent;
             while (o.parent != null)
             {
                 // already had this orbit -> remove
-                if (orbitsYou.Contains(o)) { orbitsYou.Remove(o); }
-                else { orbitsYou.Add(o); }
-                Debug.WriteLine($"S to {o.name}");
+                if (orbitsYou.Contains(o.name)) { orbitsYou.Remove(o.name); }
+                else { orbitsYou.Add(o.name); }
+                //Debug.WriteLine($"S to {o.name}");
                 o = o.parent;
             }
 
