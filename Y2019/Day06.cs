@@ -61,6 +61,7 @@ namespace AdventOfCode2019.Y2019
             }
 
             // get orbits from you and santa
+            // tactic: List all orbits from YOU/SAN to COM, and then subtract all doubles
             var orbitsYou = new HashSet<Orbit>();
             Orbit o = orbits["YOU"].parent;
             while (o.parent != null)
