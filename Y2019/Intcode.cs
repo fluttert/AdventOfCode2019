@@ -6,20 +6,22 @@ namespace AdventOfCode2019.Y2019
 {
     public class Intcode
     {
-        public int input = 0; // opcode 3
-        public int phase = 0; // initial opcode 3
-        public int output = 0; // opcode 4
+        protected int op3Input = 0; // opcode 3
+        protected int op3Phase = 0; // initial opcode 3
+        protected int op4Output = 0; // opcode 4
         protected int[] intcode;
         private bool phaseUsed = false;
 
+        public int Output { get => op4Output;  }
+
         public Intcode(string setup) : this(setup, 0) { }
 
-        public Intcode(string setup, int input) : this(setup, input, input) {}
+        public Intcode(string setup, int op3Input) : this(setup, op3Input, op3Input) {}
 
-        public Intcode(string setup, int input, int phase) {
+        public Intcode(string setup, int op3Input, int op3Phase) {
             intcode = Array.ConvertAll(setup.Split(',', StringSplitOptions.RemoveEmptyEntries), int.Parse);
-            this.input = input;
-            this.phase = phase;
+            this.op3Input = op3Input;
+            this.op3Phase = op3Phase;
         }
 
         public void Run()
@@ -52,20 +54,20 @@ namespace AdventOfCode2019.Y2019
                     index += 4; continue;
                 }
 
-                // Opcode 3, 1 parameter: input
+                // Opcode 3, 1 parameter: op3Input
                 if (opcode == 3)
                 {
-                    // needs to use phase first? 
-                    if (phaseUsed) { intcode[intcode[index + 1]] = input; }
-                    else { intcode[intcode[index + 1]] = phase; phaseUsed = true; }
+                    // needs to use op3Phase first? 
+                    if (phaseUsed) { intcode[intcode[index + 1]] = op3Input; }
+                    else { intcode[intcode[index + 1]] = op3Phase; phaseUsed = true; }
                     index += 2; continue;
                 }
 
                 // Opcode 4, 1 parameter: output
                 if (opcode == 4)
                 {
-                    output = intcode[intcode[index + 1]];
-                    Console.WriteLine($"Opcode4, pos: {intcode[index + 1]} = {intcode[intcode[index + 1]]}");
+                    op4Output = intcode[intcode[index + 1]];
+                    //Console.WriteLine($"Opcode4, pos: {intcode[index + 1]} = {intcode[intcode[index + 1]]}");
                     index += 2; continue;
                 }
 

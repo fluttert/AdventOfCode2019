@@ -62,7 +62,7 @@ namespace AdventOfCode2019.Y2019
             Debug.Assert(SolvePart2("100756") == "50346");
         }
 
-        // My personal input
+        // My personal op3Input
         public string input1 = @"114106
 87170
 133060

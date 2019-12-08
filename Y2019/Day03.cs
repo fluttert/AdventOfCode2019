@@ -8,7 +8,7 @@ namespace AdventOfCode2019.Y2019
     {
         public string SolvePart1(string input = null)
         {
-            // parse input
+            // parse op3Input
             input ??= this.input;
             string[] wires = input.Split(Environment.NewLine);
             string[] wire1 = wires[0].Split(',');
@@ -77,7 +77,7 @@ namespace AdventOfCode2019.Y2019
 
         public string SolvePart2(string input = null)
         {
-            // parse input
+            // parse op3Input
             input ??= this.input;
             string[] wires = input.Split(Environment.NewLine);
             string[] wire1 = wires[0].Split(',');

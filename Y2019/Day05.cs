@@ -10,7 +10,7 @@ namespace AdventOfCode2019.Y2019
             input ??= this.input;
             Intcode ic = new Intcode(input, 1);
             ic.Run();
-            return ""+ic.output;
+            return ""+ic.Output;
         }
 
       
@@ -20,7 +20,7 @@ namespace AdventOfCode2019.Y2019
             input ??= this.input;
             Intcode ic = new Intcode(input, 5);
             ic.Run();
-            return "" + ic.output;
+            return "" + ic.Output;
         }
 
         public void Tests()
