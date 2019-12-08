@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace AdventOfCode2019.Y2019
@@ -6,15 +7,23 @@ namespace AdventOfCode2019.Y2019
     public class Intcode
     {
         public int input = 0; // opcode 3
+        public int phase = 0; // initial opcode 3
         public int output = 0; // opcode 4
         protected int[] intcode;
-        
+        private bool phaseUsed = false;
 
-        public Intcode(string input) {
-            intcode = Array.ConvertAll(input.Split(',', StringSplitOptions.RemoveEmptyEntries), int.Parse);
+        public Intcode(string setup) : this(setup, 0) { }
+
+        public Intcode(string setup, int input) : this(setup, input, input) {}
+
+        public Intcode(string setup, int input, int phase) {
+            intcode = Array.ConvertAll(setup.Split(',', StringSplitOptions.RemoveEmptyEntries), int.Parse);
+            this.input = input;
+            this.phase = phase;
         }
 
-        public void Run() {
+        public void Run()
+        {
             int index = 0;
             while (intcode[index] != 99)
             {
@@ -46,7 +55,9 @@ namespace AdventOfCode2019.Y2019
                 // Opcode 3, 1 parameter: input
                 if (opcode == 3)
                 {
-                    intcode[intcode[index + 1]] = input;
+                    // needs to use phase first? 
+                    if (phaseUsed) { intcode[intcode[index + 1]] = input; }
+                    else { intcode[intcode[index + 1]] = phase; phaseUsed = true; }
                     index += 2; continue;
                 }
 

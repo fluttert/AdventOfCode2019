@@ -8,8 +8,7 @@ namespace AdventOfCode2019.Y2019
         public string SolvePart1(string input = null)
         {
             input ??= this.input;
-            Intcode ic = new Intcode(input);
-            ic.input = 1;
+            Intcode ic = new Intcode(input, 1);
             ic.Run();
             return ""+ic.output;
         }
@@ -19,8 +18,7 @@ namespace AdventOfCode2019.Y2019
         public string SolvePart2(string input = null)
         {
             input ??= this.input;
-            Intcode ic = new Intcode(input);
-            ic.input = 5;
+            Intcode ic = new Intcode(input, 5);
             ic.Run();
             return "" + ic.output;
         }
