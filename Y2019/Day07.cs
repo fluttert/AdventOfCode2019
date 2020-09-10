@@ -50,7 +50,49 @@ namespace AdventOfCode2019.Y2019
 
         public string SolvePart2(string input = null)
         {
-            return "";
+            input ??= this.input;
+
+            var permuations = new List<int[]>();
+            int[] values = new int[] { 5, 6, 7, 8, 9 };
+            Permutations.ForAllPermutation(values, (vals) =>
+            {
+                //Console.WriteLine(String.Join("", vals));
+                int[] target = new int[vals.Length];
+                Array.Copy(vals, target, vals.Length);
+                permuations.Add(target);
+                return false;
+            });
+
+            int highestOutput = int.MinValue;
+            int[] highestOutputPhase = new int[] { };
+            foreach (var perm in permuations)
+            {
+                int inputForIc1 = 0;
+                while (true)
+                {
+                    Intcode ic1 = new Intcode(input, inputForIc1, perm[0]);
+                    ic1.Run();
+                    Intcode ic2 = new Intcode(input, ic1.Output, perm[1]);
+                    ic2.Run();
+                    Intcode ic3 = new Intcode(input, ic2.Output, perm[2]);
+                    ic3.Run();
+                    Intcode ic4 = new Intcode(input, ic3.Output, perm[3]);
+                    ic4.Run();
+                    Intcode ic5 = new Intcode(input, ic4.Output, perm[4]);
+                    ic5.Run();
+                    inputForIc1 = ic5.Output;
+                    
+                }
+                ////return "" + ic5.Output;
+                //if (ic5.Output > highestOutput)
+                //{
+                //    //Console.WriteLine($"new highscore: {ic5.Output}");
+                //    highestOutput = ic5.Output;
+                //    highestOutputPhase = perm;
+                //}
+            }
+
+            return $"Signal: {highestOutput} , phases:{string.Join(",", highestOutputPhase)}";
         }
 
         public void Tests()
